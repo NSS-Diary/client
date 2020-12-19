@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap");
+.progress {
+  transform: translateY(-45%);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.bar {
+  width: 300px;
+  font-family: "Quattrocento Sans", sans-serif;
+}
+.sub-activity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sub-activity p {
+  padding: 20px;
+  font-size: 30px;
+  font-family: "Quattrocento Sans", sans-serif;
+}
+.farm-work p {
+  color: #3e4756;
+}
+.social-work p {
+  color: #851c49;
+}
+.project-work p {
+  color: #004c90;
+}
+@media screen and (max-width: 1200px) {
+  .progress {
+    transform: translateY(-18%);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .progress {
+    transform: translateY(-4%);
+    flex-direction: column;
+  }
+  .sub-activity {
+    margin-bottom: 10%;
+  }
+}
