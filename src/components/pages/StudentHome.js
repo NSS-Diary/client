@@ -1,9 +1,9 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import Navbar from "../layout/Navbar";
-import ProgressBar from "../tools/ProgressBar";
-import "./StudentHome.css";
+import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import Navbar from '../layout/Navbar';
+import ProgressBar from '../tools/ProgressBar';
+import './StudentHome.css';
 const StudentHome = () => {
   const [farm, setFarm] = useState(10);
   const [social, setSocial] = useState(28);

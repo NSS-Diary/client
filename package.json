@@ -8,6 +8,17 @@
   "private": true,
   "license": "ISC",
   "description": "Electron App",
+  "scripts": {
+    "dev": "concurrently -k \"npm start\" \"npm:electron\"",
+    "electron": "wait-on tcp:3000 && electron-forge start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "package": "react-scripts build && electron-forge package",
+    "make": "react-scripts build && electron-forge make",
+    "build-installer": "react-scripts build && electron-builder"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -33,50 +44,27 @@
     "redux-thunk": "^2.3.0",
     "web-vitals": "^0.2.4"
   },
-  "scripts": {
-    "dev": "concurrently -k \"npm start\" \"npm:electron\"",
-    "electron": "wait-on tcp:3000 && electron-forge start",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "package": "react-scripts build && electron-forge package",
-    "make": "react-scripts build && electron-forge make",
-    "build-installer":"react-scripts build && electron-builder"
-  },
-  "build":{
-    "appId":"nss-diary",
-    "win":{
-      "target":["nsis"],
-      "icon":"src/icons/win/icon.ico"
+  "build": {
+    "appId": "nss-diary",
+    "win": {
+      "target": ["nsis"],
+      "icon": "src/icons/win/icon.ico"
     },
-    "nsis":{
-      "installerIcon":"src/icons/win/icon.ico",
-      "uninstallerIcon":"src/icons/win/icon.ico",
-      "uninstallDisplayName":"nss-diary",
-      "license":"license.txt",
-      "oneClick":false,
-      "allowToChangeInstallationDirectory":true
-
+    "nsis": {
+      "installerIcon": "src/icons/win/icon.ico",
+      "uninstallerIcon": "src/icons/win/icon.ico",
+      "uninstallDisplayName": "nss-diary",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
@@ -110,9 +98,7 @@
         },
         {
           "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
+          "platforms": ["darwin"]
         },
         {
           "name": "@electron-forge/maker-deb",

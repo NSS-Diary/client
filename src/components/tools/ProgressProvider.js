@@ -1,5 +1,5 @@
-import React from "react";
-import { Animate } from "react-move";
+import React from 'react';
+import { Animate } from 'react-move';
 
 class AnimatedProgressProvider extends React.Component {
   interval = undefined;
@@ -37,9 +37,7 @@ class AnimatedProgressProvider extends React.Component {
           value: this.props.valueStart,
         })}
         update={() => ({
-          value: [
-            this.state.isAnimated ? this.props.valueEnd : this.props.valueStart,
-          ],
+          value: [this.state.isAnimated ? this.props.valueEnd : this.props.valueStart],
           timing: {
             duration: this.props.duration * 1000,
             ease: this.props.easingFunction,

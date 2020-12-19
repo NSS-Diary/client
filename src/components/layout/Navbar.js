@@ -1,7 +1,7 @@
-import React from "react";
-import nss_logo from "../../images/nss_logo.png";
-import "./Navbar.css";
-import MenuItems from "./MenuItems";
+import React from 'react';
+import nss_logo from '../../images/nss_logo.png';
+import './Navbar.css';
+import MenuItems from './MenuItems';
 const Navbar = ({ title, user }) => {
   return (
     <>
