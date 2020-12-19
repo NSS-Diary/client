@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { FcMenu, FcCollapse } from "react-icons/fc";
-const MenuItems = ({ user }) => {
+const MenuItems = ({ title, user }) => {
   const [menuStyle, setStyle] = useState("menu-hide");
   const [iconShape, setIcon] = useState("closed");
   const studentMenuItems = [
@@ -58,11 +58,49 @@ const MenuItems = ({ user }) => {
       cname: "nav-links",
     },
   ];
+  const loginMenu = [
+    {
+      title: "Register",
+      url: "#",
+      cname: "nav-links",
+    },
+    {
+      title: "About Us",
+      url: "#",
+      cname: "nav-links",
+    },
+    {
+      title: "FAQ",
+      url: "#",
+      cname: "nav-links",
+    },
+  ];
+  const registerMenu = [
+    {
+      title: "Login",
+      url: "#",
+      cname: "nav-links",
+    },
+    {
+      title: "About Us",
+      url: "#",
+      cname: "nav-links",
+    },
+    {
+      title: "FAQ",
+      url: "#",
+      cname: "nav-links",
+    },
+  ];
   let finalMenu;
-  if (user === "Student") {
+  if (user === "Student" && title === "Home") {
     finalMenu = studentMenuItems;
-  } else if (user === "Admin") {
+  } else if (user === "Admin" && title === "Home") {
     finalMenu = adminMenuItems;
+  } else if (title === "Login") {
+    finalMenu = loginMenu;
+  } else if (title === "Register") {
+    finalMenu = registerMenu;
   }
   const handleClick = () => {
     if (menuStyle === "menu-hide") {
