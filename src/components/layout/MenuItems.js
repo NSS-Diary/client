@@ -26,8 +26,8 @@ const MenuItems = ({ title, user }) => {
       cname: 'nav-links',
     },
     {
-      title: 'Logout',
-      url: '#',
+      title: 'Login',
+      url: '/login',
       cname: 'nav-links',
     },
   ];
