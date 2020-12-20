@@ -1,10 +1,10 @@
-import React from "react";
-import ProgressProvider from "./ProgressProvider";
+import React from 'react';
+import ProgressProvider from './ProgressProvider';
 
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
-import { easeQuadInOut } from "d3-ease";
-import AnimatedProgressProvider from "./ProgressProvider";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { easeQuadInOut } from 'd3-ease';
+import AnimatedProgressProvider from './ProgressProvider';
 const ProgressBar = ({ percent, color }) => {
   const [valueEnd, setValueEnd] = React.useState(percent);
   return (
@@ -21,10 +21,10 @@ const ProgressBar = ({ percent, color }) => {
             value={value}
             text={`${roundedValue}%`}
             styles={buildStyles({
-              pathTransition: "none",
-              trailColor: "#7493BC",
+              pathTransition: 'none',
+              trailColor: '#7493BC',
               pathColor: color,
-              textColor: "#3E4756",
+              textColor: '#3E4756',
             })}
           />
         );

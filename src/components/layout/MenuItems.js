@@ -1,114 +1,114 @@
-import React from "react";
-import { useState } from "react";
-import { FcMenu, FcCollapse } from "react-icons/fc";
+import React from 'react';
+import { useState } from 'react';
+import { FcMenu, FcCollapse } from 'react-icons/fc';
 const MenuItems = ({ title, user }) => {
-  const [menuStyle, setStyle] = useState("menu-hide");
-  const [iconShape, setIcon] = useState("closed");
+  const [menuStyle, setStyle] = useState('menu-hide');
+  const [iconShape, setIcon] = useState('closed');
   const studentMenuItems = [
     {
-      title: "Activities",
-      url: "#",
-      cname: "nav-links",
+      title: 'Activities',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "Enrolled",
-      url: "#",
-      cname: "nav-links",
+      title: 'Enrolled',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "Completed",
-      url: "#",
-      cname: "nav-links",
+      title: 'Completed',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "FAQ",
-      url: "#",
-      cname: "nav-links",
+      title: 'FAQ',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "Logout",
-      url: "#",
-      cname: "nav-links",
+      title: 'Login',
+      url: '/login',
+      cname: 'nav-links',
     },
   ];
   const adminMenuItems = [
     {
-      title: "Classrooms",
-      url: "#",
-      cname: "nav-links",
+      title: 'Classrooms',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "Activities",
-      url: "#",
-      cname: "nav-links",
+      title: 'Activities',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "Add Activity",
-      url: "#",
-      cname: "nav-links",
+      title: 'Add Activity',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "Notifications",
-      url: "#",
-      cname: "nav-links",
+      title: 'Notifications',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "Logout",
-      url: "#",
-      cname: "nav-links",
+      title: 'Logout',
+      url: '#',
+      cname: 'nav-links',
     },
   ];
   const loginMenu = [
     {
-      title: "Register",
-      url: "#",
-      cname: "nav-links",
+      title: 'Register',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "About Us",
-      url: "#",
-      cname: "nav-links",
+      title: 'About Us',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "FAQ",
-      url: "#",
-      cname: "nav-links",
+      title: 'FAQ',
+      url: '#',
+      cname: 'nav-links',
     },
   ];
   const registerMenu = [
     {
-      title: "Login",
-      url: "#",
-      cname: "nav-links",
+      title: 'Login',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "About Us",
-      url: "#",
-      cname: "nav-links",
+      title: 'About Us',
+      url: '#',
+      cname: 'nav-links',
     },
     {
-      title: "FAQ",
-      url: "#",
-      cname: "nav-links",
+      title: 'FAQ',
+      url: '#',
+      cname: 'nav-links',
     },
   ];
   let finalMenu;
-  if (user === "Student" && title === "Home") {
+  if (user === 'Student' && title === 'Home') {
     finalMenu = studentMenuItems;
-  } else if (user === "Admin" && title === "Home") {
+  } else if (user === 'Admin' && title === 'Home') {
     finalMenu = adminMenuItems;
-  } else if (title === "Login") {
+  } else if (title === 'Login') {
     finalMenu = loginMenu;
-  } else if (title === "Register") {
+  } else if (title === 'Register') {
     finalMenu = registerMenu;
   }
   const handleClick = () => {
-    if (menuStyle === "menu-hide") {
-      setStyle("menu-open");
-      setIcon("open");
-    } else if (menuStyle === "menu-open") {
-      setStyle("menu-hide");
-      setIcon("closed");
+    if (menuStyle === 'menu-hide') {
+      setStyle('menu-open');
+      setIcon('open');
+    } else if (menuStyle === 'menu-open') {
+      setStyle('menu-hide');
+      setIcon('closed');
     }
     console.log(menuStyle);
   };
@@ -126,14 +126,10 @@ const MenuItems = ({ title, user }) => {
         </ul>
       </div>
       <div className="hamburger-menu">
-        {iconShape === "closed" ? (
+        {iconShape === 'closed' ? (
           <FcMenu className="menu" size={30} onClick={handleClick} />
         ) : (
-          <FcCollapse
-            className="menu close-menu"
-            size={30}
-            onClick={handleClick}
-          />
+          <FcCollapse className="menu close-menu" size={30} onClick={handleClick} />
         )}
       </div>
       <div className={menuStyle}>
