@@ -1,9 +1,17 @@
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
 .container {
-  height: 100vh;
+  transform: translateY(-35%);
   display: flex;
+
+  justify-content: center;
+  align-items: center;
 }
 .loginForm,
 .logo {
+  height: 60vh;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -12,6 +20,9 @@
 }
 .loginForm {
   background-color: #fafafa;
+  border-radius: 20px;
+  box-shadow: inset -12px -8px 40px #464646;
+  box-shadow: 0 20px 50px rgba(2, 0, 8, 0.7);
 }
 .loginForm form {
   display: flex;
@@ -36,7 +47,7 @@
   background-color: transparent;
   height: 30px;
   font-size: 14px;
-  padding: 0 5px;
+  padding: 0 3px 0 7px;
 }
 .textbox svg path {
   fill: #7a7a7a;
@@ -60,12 +71,16 @@
 }
 
 .buttons button {
-  margin: 0 10px;
+  /* margin: 0 10px; */
+  margin-top: 8%;
+  min-width: 150px;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /*Button Styless */
 .aws-btn {
   --button-default-height: 35px;
+
   --button-default-font-size: 14px;
   --button-default-border-radius: 6px;
   --button-horizontal-padding: 20px;
@@ -87,4 +102,25 @@
   --button-anchor-color-light: #4c3016;
   --button-anchor-color-hover: #f1bfa0;
   --button-anchor-border: 1px solid #8c633c;
+}
+@media screen and (max-width: 1200px) {
+  .container {
+    transform: translateY(-18%);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    transform: translateY(-5%);
+    overflow: hidden;
+    padding-bottom: 30px;
+  }
+  .aws-btn {
+    overflow-y: hidden;
+  }
+  .aws-btn::-webkit-scrollbar {
+    display: none;
+  }
+  .loginForm {
+    width: 60%;
+  }
 }

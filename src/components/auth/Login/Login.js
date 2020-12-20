@@ -16,7 +16,7 @@ const Login = () => {
 
   return (
     <>
-      {/* <Navbar title="Login" /> */}
+      <Navbar title="Login" />
       <div className="container">
         <div className="loginForm">
           <form>
@@ -48,15 +48,15 @@ const Login = () => {
               )}
             </div>
             <div className="buttons">
-              <AwesomeButton type="primary">Login</AwesomeButton>
-              <AwesomeButton type="secondary">Register</AwesomeButton>
+              <AwesomeButton type="primary">Enter</AwesomeButton>
+              {/* <AwesomeButton type="secondary">Register</AwesomeButton> */}
             </div>
           </form>
         </div>
-        <div className="logo">
+        {/* <div className="logo">
           <img src={nss_logo} alt="Nss Logo" width={150} />
           <p className="h_h1 shadow-light-blue">NSS DIARY</p>
-        </div>
+        </div> */}
       </div>
     </>
   );
