@@ -34,6 +34,8 @@
 
 .wave-container > svg {
   display: block;
+  position: absolute;
+  z-index: -1;
   /* transform: translateY(-40px); */
   /* 
   transform-origin: right;
