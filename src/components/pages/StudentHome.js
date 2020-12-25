@@ -9,7 +9,7 @@ const StudentHome = () => {
   const [social, setSocial] = useState(28);
   const [project, setProject] = useState(47);
   return (
-    <div>
+    <>
       <Navbar title="Home" user="Student" />
       <div className="progress">
         <div className="farm-work sub-activity">
@@ -31,7 +31,7 @@ const StudentHome = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
