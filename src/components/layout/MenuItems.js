@@ -21,13 +21,13 @@ const MenuItems = ({ title, user }) => {
       cname: 'nav-links',
     },
     {
-      title: 'FAQ',
+      title: 'Notifications',
       url: '#',
       cname: 'nav-links',
     },
     {
-      title: 'Login',
-      url: '/login',
+      title: 'Logout',
+      url: '/logout',
       cname: 'nav-links',
     },
   ];
@@ -39,16 +39,6 @@ const MenuItems = ({ title, user }) => {
     },
     {
       title: 'Activities',
-      url: '#',
-      cname: 'nav-links',
-    },
-    {
-      title: 'Add Activity',
-      url: '#',
-      cname: 'nav-links',
-    },
-    {
-      title: 'Notifications',
       url: '#',
       cname: 'nav-links',
     },
