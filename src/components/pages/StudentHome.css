@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
 .progress {
   display: flex;
-  margin-top: 100px;
+  margin-top: 12%;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -28,14 +28,14 @@
 .project-work p {
   color: #004c90;
 }
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
   .progress {
     transform: translateY(-18%);
   }
-}
+} */
 @media screen and (max-width: 1000px) {
   .progress {
-    transform: translateY(-4%);
+    /* transform: translateY(-4%); */
     flex-direction: column;
   }
   .sub-activity {

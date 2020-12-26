@@ -51,7 +51,7 @@ const MenuItems = ({ title, user }) => {
   const loginMenu = [
     {
       title: 'Register',
-      url: '#',
+      url: '/register',
       cname: 'nav-links',
     },
     {
@@ -68,7 +68,7 @@ const MenuItems = ({ title, user }) => {
   const registerMenu = [
     {
       title: 'Login',
-      url: '#',
+      url: '/login',
       cname: 'nav-links',
     },
     {
