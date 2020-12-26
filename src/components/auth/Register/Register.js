@@ -5,15 +5,46 @@ import { FaUser, FaUserSecret, FaKey, FaEye, FaEyeSlash, FaEnvelope } from 'reac
 import Navbar from '../../layout/Navbar';
 import './Register.css';
 import useForm from '../../../hooks/Form';
+import AlertContext from '../../../context/alert/alertContext';
+import AuthContext from '../../../context/auth/authContext';
+import { useContext, useEffect } from 'react';
 
 const Register = () => {
+  const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+  const { setAlert } = alertContext;
+  const { register, error } = authContext;
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
 
+  useEffect(() => {
+    if (error) setAlert(error, 'danger');
+  }, [error]);
+
   const submit = () => {
-    console.log(inputs);
+    if (
+      inputs.user === '' ||
+      inputs.name === '' ||
+      inputs.email === '' ||
+      inputs.password === '' ||
+      inputs.conpassword === '' ||
+      inputs.classCode === ''
+    ) {
+      setAlert('Please enter all the fields');
+    } else if (inputs.password !== inputs.conpassword) {
+      setAlert('Passwords do not match', 'danger');
+    } else {
+      register({
+        username: inputs.user,
+        email: inputs.email,
+        name: inputs.name,
+        password: inputs.password,
+        classroom_code: inputs.classCode,
+      });
+    }
+    // console.log(inputs);
   };
   const { inputs, handleInputChange, handleSubmit } = useForm(submit, {
     user: '',
@@ -43,12 +74,7 @@ const Register = () => {
           <div className="formGroup">
             <div className="textbox">
               <FaUser />
-              <input
-                type="text"
-                placeholder="Username"
-                name="username"
-                onChange={handleInputChange}
-              />
+              <input type="text" placeholder="Username" name="user" onChange={handleInputChange} />
             </div>
             <div className="textbox">
               <FaUserSecret />
