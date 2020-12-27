@@ -8,20 +8,29 @@ import useForm from '../../../hooks/Form';
 import AlertContext from '../../../context/alert/alertContext';
 import AuthContext from '../../../context/auth/authContext';
 import { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Register = () => {
+  const history = useHistory('/');
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
   const { setAlert } = alertContext;
-  const { register, error } = authContext;
+  const { register, error, clearErrors, isAuthenticated } = authContext;
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
 
   useEffect(() => {
-    if (error) setAlert(error, 'danger');
-  }, [error]);
+    if (isAuthenticated) {
+      history.push('/studenthome');
+      console.log('authenticated');
+    }
+    if (error) {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+  }, [error, history, isAuthenticated]);
 
   const submit = () => {
     if (

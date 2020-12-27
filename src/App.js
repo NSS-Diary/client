@@ -8,6 +8,10 @@ import AdminHome from './components/pages/AdminHome';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
 import Alert from './components/layout/Alert';
+import setAuthToken from './utils/setAuthToken';
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 function App() {
   return (
     <AuthState>

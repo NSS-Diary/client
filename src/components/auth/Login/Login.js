@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AwesomeButton } from 'react-awesome-button';
 import { useHistory } from 'react-router-dom';
 import 'react-awesome-button/dist/styles.css';
@@ -7,6 +7,8 @@ import Navbar from '../../layout/Navbar';
 import './Login.css';
 import useForm from '../../../hooks/Form';
 import { AuthService } from '../../../services/auth';
+import AlertContext from '../../../context/alert/alertContext';
+import AuthContext from '../../../context/auth/authContext';
 
 const Login = () => {
   const history = useHistory();
@@ -15,15 +17,29 @@ const Login = () => {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-
+  const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push('/studenthome');
+      console.log('authenticated');
+    }
+    if (error) {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+  }, [error, history, isAuthenticated]);
   const submit = () => {
-    AuthServiceInstance.SignIn(inputs)
-      .then((res) => {
-        history.push('/');
-      })
-      .catch((err) => {
-        console.log('Error Occured while Logging in', err);
+    if (inputs.username === '' || inputs.password === '') {
+      setAlert('Please enter all the fields');
+    } else {
+      login({
+        username: inputs.username,
+        password: inputs.password,
       });
+    }
   };
 
   const { inputs, handleInputChange, handleSubmit } = useForm(submit, {
