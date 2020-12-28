@@ -20,17 +20,26 @@ const Login = () => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
   const { setAlert } = alertContext;
-  const { login, error, clearErrors, isAuthenticated } = authContext;
+  const { login, error, clearErrors, isAuthenticated, user } = authContext;
   useEffect(() => {
     if (isAuthenticated) {
-      history.push('/studenthome');
+      console.log(user);
+      if (user.user_type === 'SUPER_ADMIN') {
+        history.push('/adminhome');
+      } else if (user.user_type === 'CLASSROOM_ADMIN') {
+        history.push('/adminhome');
+      } else if (user.user_type === 'STUDENT') {
+        history.push('/studenthome');
+      }
+
       console.log('authenticated');
     }
+
     if (error) {
       setAlert(error, 'danger');
       clearErrors();
     }
-  }, [error, history, isAuthenticated]);
+  }, [error, history, isAuthenticated, user]);
   const submit = () => {
     if (inputs.username === '' || inputs.password === '') {
       setAlert('Please enter all the fields');

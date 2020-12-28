@@ -8,3 +8,6 @@ export const USER_LOADED = 'USER_LOADED';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const ADD_CLASSROOM = 'ADD_CLASSROOM';
+export const GET_CLASSROOMS = 'GET_CLASSROOMS';
+export const CLASSROOM_ERROR = 'CLASSROOM_ERROR';

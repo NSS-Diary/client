@@ -10,7 +10,7 @@ const StudentHome = () => {
   const [project, setProject] = useState(47);
   return (
     <>
-      <Navbar title="Home" user="Student" />
+      <Navbar title="Home" userType="Student" />
       <div className="progress">
         <div className="farm-work sub-activity">
           <p>Farm Work</p>

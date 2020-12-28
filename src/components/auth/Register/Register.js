@@ -15,7 +15,7 @@ const Register = () => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
   const { setAlert } = alertContext;
-  const { register, error, clearErrors, isAuthenticated } = authContext;
+  const { register, error, clearErrors, isAuthenticated, user } = authContext;
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -23,6 +23,7 @@ const Register = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
+      console.log(user);
       history.push('/studenthome');
       console.log('authenticated');
     }
@@ -30,7 +31,7 @@ const Register = () => {
       setAlert(error, 'danger');
       clearErrors();
     }
-  }, [error, history, isAuthenticated]);
+  }, [error, history, isAuthenticated, user]);
 
   const submit = () => {
     if (

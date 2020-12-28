@@ -26,6 +26,24 @@ const AuthState = (props) => {
   };
   const [state, dispatch] = useReducer(authReducer, initialState);
   //Load User
+  const loadUser = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    // try {
+    //   const res = await axios.get('/api/user/me');
+    //   console.log(res.data.user);
+    //   dispatch({
+    //     type: USER_LOADED,
+    //     payload: res.data.user,
+    //   });
+    // } catch (err) {
+    //   dispatch({
+    //     type: AUTH_ERROR,
+    //     payload: err.response.data.errors.message,
+    //   });
+    // }
+  };
 
   //Register User
 
@@ -43,6 +61,7 @@ const AuthState = (props) => {
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
+      loadUser();
     } catch (err) {
       console.log(err.response.data.errors.message);
       dispatch({
@@ -67,6 +86,7 @@ const AuthState = (props) => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
+      loadUser();
     } catch (err) {
       console.log(err.response.data.errors.message);
       dispatch({
@@ -77,6 +97,11 @@ const AuthState = (props) => {
   };
 
   //Logout
+  const logout = () => {
+    dispatch({
+      type: LOGOUT,
+    });
+  };
 
   //Clear Errors
   const clearErrors = () => {
@@ -93,6 +118,9 @@ const AuthState = (props) => {
         register,
         login,
         clearErrors,
+        loadUser,
+        login,
+        logout,
       }}
     >
       {props.children}

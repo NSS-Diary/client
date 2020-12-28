@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { FcMenu, FcCollapse } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 const MenuItems = ({ title, user }) => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, logout } = authContext;
   const [menuStyle, setStyle] = useState('menu-hide');
   const [iconShape, setIcon] = useState('closed');
+  const onLogout = (item) => {
+    console.log(item);
+    if (item.url === '/logout') {
+      logout();
+    }
+  };
   const studentMenuItems = [
     {
       title: 'Activities',
@@ -27,7 +37,7 @@ const MenuItems = ({ title, user }) => {
     },
     {
       title: 'Logout',
-      url: '/logout',
+      url: '/login',
       cname: 'nav-links',
     },
   ];
@@ -44,7 +54,7 @@ const MenuItems = ({ title, user }) => {
     },
     {
       title: 'Logout',
-      url: '#',
+      url: '/login',
       cname: 'nav-links',
     },
   ];
@@ -108,8 +118,16 @@ const MenuItems = ({ title, user }) => {
         <ul className="links">
           {finalMenu.map((item) => {
             return (
-              <li className="list-item pass" key={item.title}>
-                <a href={item.url}>{item.title}</a>
+              <li
+                className="list-item pass"
+                key={item.title}
+                onClickCapture={() => {
+                  if (item.title === 'Logout') {
+                    logout();
+                  }
+                }}
+              >
+                <Link to={item.url}>{item.title}</Link>
               </li>
             );
           })}
@@ -126,8 +144,16 @@ const MenuItems = ({ title, user }) => {
         <ul className="links-vertical">
           {finalMenu.map((item) => {
             return (
-              <li className="list-vertical pass" key={item.title}>
-                <a href={item.url}>{item.title}</a>
+              <li
+                className="list-item pass"
+                key={item.title}
+                onClickCapture={() => {
+                  if (item.title === 'Logout') {
+                    logout();
+                  }
+                }}
+              >
+                <Link to={item.url}>{item.title}</Link>
               </li>
             );
           })}
