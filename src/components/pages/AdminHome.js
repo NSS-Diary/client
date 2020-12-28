@@ -9,6 +9,7 @@ import AuthContext from '../../context/auth/authContext';
 
 import './AdminHome.css';
 import { useContext } from 'react/cjs/react.development';
+import Classrooms from './classrooms/Classrooms';
 const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos = 12 }) => {
   const authContext = useContext(AuthContext);
   const { loadUser, user } = authContext;
@@ -38,17 +39,17 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
         setClassrooms(JSON.stringify(values.classRooms));
       },
     });
-    svgRef.current = anime({
-      targets: '#demo-svg path',
-      strokeDashoffset: [anime.setDashoffset, 0],
-      easing: 'easeInOutSine',
-      duration: 10000,
-      delay: function (el, i) {
-        return i * 2500;
-      },
-      direction: 'alternate',
-      loop: true,
-    });
+    // svgRef.current = anime({
+    //   targets: '#demo-svg path',
+    //   strokeDashoffset: [anime.setDashoffset, 0],
+    //   easing: 'easeInOutSine',
+    //   duration: 10000,
+    //   delay: function (el, i) {
+    //     return i * 2500;
+    //   },
+    //   direction: 'alternate',
+    //   loop: true,
+    // });
   }, []);
   let usertype = 'Admin';
   if (user.user_type === 'SUPER_ADMIN') {
@@ -79,7 +80,7 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
             <div style={{ fontWeight: 'bold' }}>{classRooms}</div>
           </div>
         </div>
-        <div className="svg-classroom">
+        {/* <div className="svg-classroom">
           <svg
             width="40%"
             viewBox="0 0 907.2 151.8"
@@ -94,7 +95,8 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
               vectorEffect="non-scaling-stroke"
             />
           </svg>
-        </div>
+        </div> */}
+        <Classrooms />
       </div>
     </div>
   );

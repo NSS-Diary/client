@@ -1,25 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useContext } from 'react/cjs/react.development';
+import ClassroomContext from '../../../context/classroom/classroomContext';
 
-const Classrooms = ({ classrooms }) => {
-  classrooms_temp = [
-    {
-      class: 'CSE-A',
-      strength: 79,
-    },
-    {
-      class: 'CSE-B',
-      strength: 80,
-    },
-    {
-      class: 'ECE-A',
-      strength: 90,
-    },
-    {
-      class: 'ECE-B',
-      strength: 90,
-    },
-  ];
-  return <div></div>;
+const Classrooms = () => {
+  const classroomContext = useContext(ClassroomContext);
+  const { classrooms, getClassrooms } = classroomContext;
+  useEffect(() => {
+    getClassrooms();
+  }, []);
+  return <div>{classrooms === null ? 'Loading' : 'Loaded'}</div>;
 };
 
 export default Classrooms;
