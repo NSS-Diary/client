@@ -1,4 +1,10 @@
-import { GET_CLASSROOMS, ADD_CLASSROOM, CLASSROOM_ERROR, CLEAR_ERRORS } from '../types';
+import {
+  GET_CLASSROOMS,
+  ADD_CLASSROOM,
+  CLASSROOM_ERROR,
+  CLEAR_ERRORS,
+  GET_CLASSROOM,
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -13,6 +19,11 @@ export default (state, action) => {
         ...state,
         classrooms: action.payload,
         loading: false,
+      };
+    case GET_CLASSROOM:
+      return {
+        ...state,
+        current_classroom: action.payload,
       };
     case CLASSROOM_ERROR:
       return {

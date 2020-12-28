@@ -11,6 +11,9 @@ import ClassroomState from './context/classroom/ClassroomState';
 import Alert from './components/layout/Alert';
 import setAuthToken from './utils/setAuthToken';
 import AddClassroom from './components/pages/classrooms/AddClassroom';
+import ClassroomItem from './components/pages/classrooms/ClassroomItem';
+import Activities from './components/pages/classrooms/activity/Activities';
+import AddActivity from './components/pages/classrooms/activity/AddActivity';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -40,6 +43,21 @@ function App() {
               <Route exact path="/addclassroom">
                 <AddClassroom />
               </Route>
+              <Route
+                exact
+                path="/classroom/:classcode"
+                render={(props) => <ClassroomItem {...props} />}
+              />
+              <Route
+                exact
+                path="/classroom/:classcode/activities"
+                render={(props) => <Activities {...props} />}
+              />
+              <Route
+                exact
+                path="/classroom/:classcode/activities/addactivity"
+                render={(props) => <AddActivity {...props} />}
+              />
             </Switch>
           </Router>
         </AlertState>

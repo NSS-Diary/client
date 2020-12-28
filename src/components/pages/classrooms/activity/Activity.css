@@ -1,0 +1,18 @@
+.center-container {
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.center-container .items {
+  background-color: cyan;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+.items:hover {
+  background-color: white;
+  transform: translateX(2px);
+}

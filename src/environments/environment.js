@@ -1,1 +1,1 @@
-export const APIEndpoint = 'https://nss-diary.herokuapp.com';
+export const APIEndpoint = 'http://nss-db.nikhilrajesh.com/';

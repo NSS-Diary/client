@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useContext } from 'react/cjs/react.development';
+import Classroom from './Classroom';
 import ClassroomContext from '../../../context/classroom/classroomContext';
 
 const Classrooms = () => {
@@ -8,7 +9,18 @@ const Classrooms = () => {
   useEffect(() => {
     getClassrooms();
   }, []);
-  return <div>{classrooms === null ? 'Loading' : 'Loaded'}</div>;
+
+  if (!classrooms) {
+    return <div>Loading....</div>;
+  } else {
+    return (
+      <div className="display-class">
+        {classrooms.map((classroom) => {
+          return <Classroom classroom={classroom} key={classroom.name} />;
+        })}
+      </div>
+    );
+  }
 };
 
 export default Classrooms;

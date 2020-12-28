@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { FcMenu, FcCollapse } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 const MenuItems = ({ title, user }) => {
+  const location = useLocation();
+  const classroom = JSON.parse(localStorage.getItem('classroom'));
+  const classcode = classroom.classroom_code;
   const authContext = useContext(AuthContext);
   const { isAuthenticated, logout } = authContext;
   const [menuStyle, setStyle] = useState('menu-hide');
@@ -14,6 +17,41 @@ const MenuItems = ({ title, user }) => {
       logout();
     }
   };
+  const activityItems = [
+    {
+      title: 'Go Back',
+      url: '',
+      cname: 'nav-links',
+    },
+    {
+      title: 'Home',
+      url: ``,
+      cname: 'nav-links',
+    },
+  ];
+  const noficationItems = [];
+  const classroomItems = [
+    {
+      title: 'Home',
+      url: '/adminhome',
+      cname: 'nav-links',
+    },
+    {
+      title: 'Activities',
+      url: `${location.pathname}/activities`,
+      cname: 'nav-links',
+    },
+    {
+      title: 'Notifications',
+      url: '#',
+      cname: 'nav-links',
+    },
+    {
+      title: 'Students',
+      url: '#',
+      cname: 'nav-links',
+    },
+  ];
   const studentMenuItems = [
     {
       title: 'Activities',
@@ -120,6 +158,12 @@ const MenuItems = ({ title, user }) => {
     finalMenu = loginMenu;
   } else if (title === 'Register') {
     finalMenu = registerMenu;
+  } else if (title === 'Classroom') {
+    finalMenu = classroomItems;
+  } else if (title === 'Notifications') {
+    finalMenu = noficationItems;
+  } else if (title === 'Activities') {
+    finalMenu = activityItems;
   }
   const handleClick = () => {
     if (menuStyle === 'menu-hide') {

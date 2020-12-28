@@ -130,6 +130,5 @@
         }
       ]
     }
-  },
-  "proxy": "https://nss-diary.herokuapp.com"
+  }
 }

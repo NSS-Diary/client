@@ -39,22 +39,22 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
         setClassrooms(JSON.stringify(values.classRooms));
       },
     });
-    // svgRef.current = anime({
-    //   targets: '#demo-svg path',
-    //   strokeDashoffset: [anime.setDashoffset, 0],
-    //   easing: 'easeInOutSine',
-    //   duration: 10000,
-    //   delay: function (el, i) {
-    //     return i * 2500;
-    //   },
-    //   direction: 'alternate',
-    //   loop: true,
-    // });
+    svgRef.current = anime({
+      targets: '#demo-svg path',
+      strokeDashoffset: [anime.setDashoffset, 0],
+      easing: 'easeInOutSine',
+      duration: 10000,
+      delay: function (el, i) {
+        return i * 2500;
+      },
+      direction: 'alternate',
+      loop: true,
+    });
   }, []);
   let usertype = 'Admin';
-  if (user.user_type === 'SUPER_ADMIN') {
+  if (user && user.user_type === 'SUPER_ADMIN') {
     usertype = 'SuperAdmin';
-  } else if (user.user_type === 'CLASSROOM_ADMIN') {
+  } else if (user && user.user_type === 'CLASSROOM_ADMIN') {
     usertype = 'Admin';
   }
   return (
@@ -80,7 +80,7 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
             <div style={{ fontWeight: 'bold' }}>{classRooms}</div>
           </div>
         </div>
-        {/* <div className="svg-classroom">
+        <div className="svg-classroom">
           <svg
             width="40%"
             viewBox="0 0 907.2 151.8"
@@ -95,7 +95,8 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
               vectorEffect="non-scaling-stroke"
             />
           </svg>
-        </div> */}
+        </div>
+
         <Classrooms />
       </div>
     </div>
