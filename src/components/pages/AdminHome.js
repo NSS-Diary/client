@@ -11,7 +11,7 @@ import './AdminHome.css';
 import { useContext } from 'react/cjs/react.development';
 const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos = 12 }) => {
   const authContext = useContext(AuthContext);
-  const { user } = authContext;
+  const { loadUser, user } = authContext;
   const objRef = useRef(null);
   const [students, setStudents] = useState(0);
   const [daysLeft, setDays] = useState(150);
@@ -24,6 +24,7 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
   const svgRef = useRef(null);
 
   useEffect(() => {
+    loadUser();
     objRef.current = anime({
       targets: values,
       students: studentsEnrolled,
@@ -49,9 +50,15 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
       loop: true,
     });
   }, []);
+  let usertype = 'Admin';
+  if (user.user_type === 'SUPER_ADMIN') {
+    usertype = 'SuperAdmin';
+  } else if (user.user_type === 'CLASSROOM_ADMIN') {
+    usertype = 'Admin';
+  }
   return (
     <div>
-      <Navbar title="Home" user="SuperAdmin" />
+      <Navbar title="Home" user={usertype} />
       <div
         className="main-container"
         onClick={() => {
