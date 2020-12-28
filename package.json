@@ -42,6 +42,7 @@
     "react-scripts": "4.0.1",
     "react-toastify": "^6.2.0",
     "react-web-vector-icons": "^1.0.2",
+    "reactjs-popup": "^2.0.4",
     "redux": "^4.0.5",
     "redux-devtools": "^3.7.0",
     "redux-thunk": "^2.3.0",
@@ -130,5 +131,5 @@
       ]
     }
   },
-  "proxy":"https://nss-diary.herokuapp.com"
+  "proxy": "https://nss-diary.herokuapp.com"
 }

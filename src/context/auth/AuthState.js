@@ -30,19 +30,19 @@ const AuthState = (props) => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
-    // try {
-    //   const res = await axios.get('/api/user/me');
-    //   console.log(res.data.user);
-    //   dispatch({
-    //     type: USER_LOADED,
-    //     payload: res.data.user,
-    //   });
-    // } catch (err) {
-    //   dispatch({
-    //     type: AUTH_ERROR,
-    //     payload: err.response.data.errors.message,
-    //   });
-    // }
+    try {
+      const res = await axios.get('/api/user/me');
+
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data.user,
+      });
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR,
+        payload: err.response.data.errors.message,
+      });
+    }
   };
 
   //Register User

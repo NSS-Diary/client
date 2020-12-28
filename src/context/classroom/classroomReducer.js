@@ -1,4 +1,3 @@
-import { stat } from 'fs';
 import { GET_CLASSROOMS, ADD_CLASSROOM, CLASSROOM_ERROR, CLEAR_ERRORS } from '../types';
 
 export default (state, action) => {

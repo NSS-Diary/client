@@ -5,9 +5,13 @@ import { useState } from 'react';
 import Navbar from '../layout/Navbar';
 import anime from 'animejs';
 import { path } from './path';
+import AuthContext from '../../context/auth/authContext';
 
 import './AdminHome.css';
+import { useContext } from 'react/cjs/react.development';
 const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos = 12 }) => {
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
   const objRef = useRef(null);
   const [students, setStudents] = useState(0);
   const [daysLeft, setDays] = useState(150);
@@ -47,7 +51,7 @@ const AdminHome = ({ studentsEnrolled = 340, daysLeftCourse = 120, classRoomNos 
   }, []);
   return (
     <div>
-      <Navbar title="Home" user="Admin" />
+      <Navbar title="Home" user="SuperAdmin" />
       <div
         className="main-container"
         onClick={() => {

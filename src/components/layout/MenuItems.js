@@ -58,6 +58,23 @@ const MenuItems = ({ title, user }) => {
       cname: 'nav-links',
     },
   ];
+  const superAdminMenu = [
+    {
+      title: 'Add Classroom',
+      url: '/addclassroom',
+      cname: 'nav-links',
+    },
+    {
+      title: 'Activities',
+      url: '#',
+      cname: 'nav-links',
+    },
+    {
+      title: 'Logout',
+      url: '/login',
+      cname: 'nav-links',
+    },
+  ];
   const loginMenu = [
     {
       title: 'Register',
@@ -95,6 +112,8 @@ const MenuItems = ({ title, user }) => {
   let finalMenu;
   if (user === 'Student' && title === 'Home') {
     finalMenu = studentMenuItems;
+  } else if (user === 'SuperAdmin' && title === 'Home') {
+    finalMenu = superAdminMenu;
   } else if (user === 'Admin' && title === 'Home') {
     finalMenu = adminMenuItems;
   } else if (title === 'Login') {

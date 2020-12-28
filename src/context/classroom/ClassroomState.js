@@ -4,16 +4,19 @@ import classroomReducer from './classroomReducer';
 
 import { ADD_CLASSROOM, GET_CLASSROOMS, CLASSROOM_ERROR, CLEAR_ERRORS } from '../types';
 
+import setAuthToken from '../../utils/setAuthToken';
 import axios from 'axios';
-import { copyFile, stat } from 'fs';
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 const ClassroomState = (props) => {
   const initialState = {
-    classrooms: null,
+    classrooms: [],
     error: null,
     loading: false,
   };
-  const [state, dispatch] = useReducer(classroomReducer);
+  const [state, dispatch] = useReducer(classroomReducer, initialState);
   //Get classrooms
   const getClassrooms = async () => {
     try {
@@ -22,7 +25,7 @@ const ClassroomState = (props) => {
     } catch (err) {
       dispatch({
         type: CLASSROOM_ERROR,
-        payload: err.response.errors.message,
+        payload: err.response,
       });
     }
   };
@@ -39,7 +42,7 @@ const ClassroomState = (props) => {
     } catch (err) {
       dispatch({
         type: CLASSROOM_ERROR,
-        payload: err.response.errors.message,
+        payload: err.response.data.errors.message,
       });
     }
   };
@@ -55,6 +58,7 @@ const ClassroomState = (props) => {
         loading: state.loading,
         addClassroom,
         getClassrooms,
+        clearError,
       }}
     >
       {props.children}
